@@ -286,6 +286,9 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var VCF_URL = "/pem.vcf";   /* after deploy: "https://YOUR-DOMAIN/pem.vcf" for reliable iOS Add Contact */
 
+  /* GA4 event helper — safe no-op if gtag is blocked/absent */
+  function track(name, params){ try{ if(typeof gtag==='function') gtag('event', name, params||{}); }catch(e){} }
+
   /* opening: the REFORMING pattern develops (CSS stagger), then the cover wipes away to reveal the card */
   (function(){
     var cover=document.getElementById('cover');
@@ -303,6 +306,12 @@
   document.getElementById('f-email').href='mailto:'+email;
   document.getElementById('f-phone').href='tel:'+phone.replace(/[^0-9+]/g,'');
   document.getElementById('f-loc').href='https://maps.google.com/?q='+encodeURIComponent(loc);
+
+  /* track contact-row taps (email / phone / location) */
+  ['email','phone','loc'].forEach(function(k){
+    var el=document.getElementById('f-'+k);
+    if(el) el.addEventListener('click', function(){ track('contact_click', {method:k}); });
+  });
 
   var nameEl=document.getElementById('v-name');
   if(!reduce && nameEl){
@@ -328,6 +337,7 @@
 
   document.getElementById('save').addEventListener('click', function(){
     enableTilt();
+    track('add_contact', {method: VCF_URL ? 'vcf_file' : 'vcf_blob'});
     var btn=this, lbl=document.getElementById('save-label');
     function flash(){ btn.classList.add('done'); lbl.textContent='Saved  \u2713';
       clearTimeout(btn._t); btn._t=setTimeout(function(){ btn.classList.remove('done'); lbl.textContent='Add Contact'; },2200); }
