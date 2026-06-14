@@ -98,27 +98,40 @@
   .tagline{ font-family:"Space Grotesk",sans-serif; font-weight:400;
     font-size:clamp(15px,4.4vw,18px); line-height:1.3; margin-top:18px; color:var(--muted); }
   .tl-line{ display:block; opacity:0; animation:rise .5s cubic-bezier(.2,.7,.2,1) forwards; }
-  .tl-line:nth-child(1){ animation-delay:1.9s; }
-  .tl-line:nth-child(2){ animation-delay:2.05s; color:var(--text); }
+  .tl-line:nth-child(1){ animation-delay:1.5s; }
+  .tl-line:nth-child(2){ animation-delay:1.62s; color:var(--text); }
   .standout{ position:relative; white-space:nowrap; font-weight:500; }
   .standout::after{ content:""; position:absolute; left:0; right:0; bottom:-2px; height:1.6px;
     background:var(--accent); transform:scaleX(0); transform-origin:left center;
-    animation:draw .5s cubic-bezier(.2,.7,.2,1) 2.3s forwards; }
+    animation:draw .5s cubic-bezier(.2,.7,.2,1) 1.9s forwards; }
   @keyframes draw{ to{ transform:scaleX(1); } }
+
+  .skills{ margin-top:24px; display:flex; flex-direction:column; gap:10px; }
+  .skill{ opacity:0; animation:rise .5s cubic-bezier(.2,.7,.2,1) forwards; }
+  .skill .s-name{ font-family:"Space Grotesk",sans-serif; font-weight:500;
+    font-size:clamp(14px,4vw,16px); line-height:1.18; letter-spacing:-.01em; color:var(--text); }
+  .skill .s-tools{ display:block; margin-top:3px; font-family:"Space Mono",monospace; font-weight:400;
+    font-size:8.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); }
+  .skill:nth-child(1){ animation-delay:1.75s; }
+  .skill:nth-child(2){ animation-delay:1.83s; }
+  .skill:nth-child(3){ animation-delay:1.91s; }
+  .skill:nth-child(4){ animation-delay:1.99s; }
+  .skill:nth-child(5){ animation-delay:2.07s; }
+  .skill:nth-child(6){ animation-delay:2.15s; }
 
   .spacer{ flex:1; min-height:24px; }
 
   .rule{ position:relative; height:1px; background:var(--rule); margin-bottom:20px;
-    transform:scaleX(0); transform-origin:left; animation:draw .55s cubic-bezier(.2,.7,.2,1) 2.0s forwards; }
+    transform:scaleX(0); transform-origin:left; animation:draw .55s cubic-bezier(.2,.7,.2,1) 2.3s forwards; }
   .rule::before{ content:""; position:absolute; left:0; top:0; width:30px; height:1px; background:var(--accent); }
 
   .contact{ display:flex; flex-direction:column; gap:4px; margin-bottom:20px; }
   .field{ display:flex; align-items:baseline; gap:14px; text-decoration:none; color:inherit;
     min-height:44px; padding:7px 9px; margin:0 -9px; border-radius:6px; transition:background .2s ease;
     opacity:0; animation:rise .5s cubic-bezier(.2,.7,.2,1) forwards; }
-  .field:nth-child(1){ animation-delay:2.1s; }
-  .field:nth-child(2){ animation-delay:2.2s; }
-  .field:nth-child(3){ animation-delay:2.3s; }
+  .field:nth-child(1){ animation-delay:2.4s; }
+  .field:nth-child(2){ animation-delay:2.48s; }
+  .field:nth-child(3){ animation-delay:2.56s; }
   .field:active{ background:rgba(206,30,41,.16); }
   @media (hover:hover){ .field:hover{ background:rgba(242,242,244,.06); } }
   .label{ flex:none; width:74px; font-weight:700; font-size:8.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); padding-top:3px; }
@@ -126,7 +139,7 @@
 
   @property --beam{ syntax:"<angle>"; initial-value:0deg; inherits:false; }
   .save-wrap{ position:relative; align-self:flex-start;
-    opacity:0; animation:rise .5s cubic-bezier(.2,.7,.2,1) 2.45s forwards; }
+    opacity:0; animation:rise .5s cubic-bezier(.2,.7,.2,1) 2.7s forwards; }
   .save-wrap::before{ content:""; position:absolute; inset:-5px; border-radius:17px; z-index:0; pointer-events:none;
     padding:5px; background:conic-gradient(from var(--beam),
       rgba(206,30,41,0) 0deg, rgba(206,30,41,0) 232deg,
@@ -155,7 +168,7 @@
   @media (prefers-reduced-motion: reduce){
     .cover{ display:none !important; }
     .vlines,.cglow,.sideglow{ animation:none !important; opacity:1 !important; }
-    .eyebrow,.name,.tl-line,.standout::after,.rule,.field,.save-wrap{
+    .eyebrow,.name,.tl-line,.standout::after,.rule,.field,.save-wrap,.skill{
       animation:none !important; opacity:1 !important; transform:none !important; }
     .save-wrap::before,.save-wrap::after{ animation:none !important; }
     .standout::after,.rule{ transform:scaleX(1) !important; }
@@ -232,6 +245,15 @@
           <span class="tl-line">Software Solutions</span>
           <span class="tl-line">That <span class="standout">Stand&nbsp;Out</span>.</span>
         </p>
+
+        <div class="skills">
+          <div class="skill"><span class="s-name">Brand Identity &amp; Logo Design</span><span class="s-tools">Illustrator</span></div>
+          <div class="skill"><span class="s-name">Editorial &amp; Print Design</span><span class="s-tools">InDesign</span></div>
+          <div class="skill"><span class="s-name">Photo Editing &amp; Retouching</span><span class="s-tools">Photoshop · Lightroom</span></div>
+          <div class="skill"><span class="s-name">Motion Graphics &amp; Video</span><span class="s-tools">After Effects · DaVinci Resolve</span></div>
+          <div class="skill"><span class="s-name">Websites &amp; Mobile Apps</span><span class="s-tools">Figma · Xcode · Claude Code · Antigravity</span></div>
+          <div class="skill"><span class="s-name">3D Design &amp; Visualisation</span><span class="s-tools">Blender</span></div>
+        </div>
 
         <div class="spacer"></div>
         <div class="rule"></div>
