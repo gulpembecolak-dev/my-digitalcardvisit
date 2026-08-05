@@ -339,7 +339,7 @@
     enableTilt();
     track('add_contact', {method: VCF_URL ? 'vcf_file' : 'vcf_blob'});
     var btn=this, lbl=document.getElementById('save-label');
-    function flash(){ btn.classList.add('done'); lbl.textContent='Saved  \u2713';
+    function flash(){ btn.classList.add('done'); lbl.textContent='Opening\u2026';
       clearTimeout(btn._t); btn._t=setTimeout(function(){ btn.classList.remove('done'); lbl.textContent='Add Contact'; },2200); }
     if(VCF_URL){ window.location.href=VCF_URL; flash(); return; }
     var name=get('v-name'), role=get('v-role');
